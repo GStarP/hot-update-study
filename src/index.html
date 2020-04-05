@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="css-test"></div>
+    <div id="js-test">hxwnb</div>
+    <script>
+      function reloadCSS(name) {
+        var links = document.getElementsByTagName('link')
+        for (var i = 0; i < links.length; i++) {
+          splitArr = links[i].href.split('/')
+          if (splitArr[splitArr.length - 1] === name) {
+            var h = links[i].href
+            var headNode = document.getElementsByTagName('head')[0]
+            headNode.removeChild(links[i])
+            var newLinkNode = document.createElement('link')
+            newLinkNode.href = h
+            newLinkNode.rel = 'stylesheet'
+            headNode.appendChild(newLinkNode)
+          }
+        }
+        console.log('css reload')
+      }
+      var sc = new WebSocket('ws://127.0.0.1:8888')
+      sc.addEventListener('open', function(e) {
+        console.log('connect to ws')
+      })
+      sc.addEventListener('message', function(e) {
+        var updateInfo = JSON.parse(e.data)
+        if (updateInfo.type === 'css') {
+          reloadCSS(updateInfo.name)
+        } else {
+          location.reload()
+        }
+      })
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>

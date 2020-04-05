@@ -1,0 +1,23 @@
+{
+  "name": "hot-update-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GStarP/hot-update-study.git"
+  },
+  "author": "hxw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GStarP/hot-update-study/issues"
+  },
+  "homepage": "https://github.com/GStarP/hot-update-study#readme",
+  "dependencies": {
+    "nodejs-websocket": "^1.7.2"
+  }
+}
